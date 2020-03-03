@@ -10,6 +10,8 @@ namespace Conveys_Game_of_Life
     {
         static void Main(string[] args)
         {
+            char ascii = (char)219;
+            Console.WriteLine(ascii);
         }
     }
 }
