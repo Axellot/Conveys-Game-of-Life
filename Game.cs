@@ -10,21 +10,35 @@ namespace Conveys_Game_of_Life
     {
         public Cell[,] CellMatrix { get; set; } = new Cell[15, 15];
 
-        /// <summary>
-        /// Fills the initial matrix with dead cells
-        /// </summary>
+        
         public void FillMatrix()
         {
-            for(int i = 0; i < CellMatrix.GetLength(0); i++)
+            int length = CellMatrix.GetLength(0) - 1;
+            for (int x = 0; x < length; x++)
             {
-                for (int j = 0; j < CellMatrix.GetLength(1); i++)
+                for (int y = 0; y < length; y++)
                 {
-                    this.CellMatrix[j,i] = new Cell(false);
+                    this.CellMatrix[x,y] = new Cell(false);
                 }
             }
         }
 
+        public void Play()
+        {
+            bool isRunning = true;
 
+            this.FillMatrix();
+
+            while (isRunning)
+            {
+
+            }
+        }
+
+        public void SetLivingCells()
+        {
+
+        }
 
     }
 }
