@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace Conveys_Game_of_Life
 {
-    class Game
+    public class Game
     {
         public Cell[,] CellMatrix { get; set; } = new Cell[15, 15];
 
+        /// <summary>
+        /// Fills the initial matrix with dead cells
+        /// </summary>
         private void FillMatrix()
         {
             for(int i = 0; i < CellMatrix.GetLength(0); i++)
@@ -20,6 +23,8 @@ namespace Conveys_Game_of_Life
                 }
             }
         }
+
+
 
     }
 }
