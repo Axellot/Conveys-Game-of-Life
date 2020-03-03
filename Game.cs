@@ -13,7 +13,7 @@ namespace Conveys_Game_of_Life
         
         public void FillMatrix()
         {
-            int length = CellMatrix.GetLength(0) - 1;
+            int length = CellMatrix.GetLength(0);
             for (int x = 0; x < length; x++)
             {
                 for (int y = 0; y < length; y++)
@@ -28,16 +28,19 @@ namespace Conveys_Game_of_Life
             bool isRunning = true;
 
             this.FillMatrix();
-
+            //this.SetLivingCells();
             while (isRunning)
             {
 
             }
         }
 
-        public void SetLivingCells()
+        public void SetLivingCells(List<KeyValuePair<int,int>> coordinateList)
         {
-
+            foreach(KeyValuePair<int,int> coordinate in coordinateList)
+            {
+                CellMatrix[coordinate.Key, coordinate.Value].Alive = true;
+            }
         }
 
     }
