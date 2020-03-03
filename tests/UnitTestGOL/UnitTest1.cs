@@ -9,9 +9,6 @@ namespace UnitTestGOL
         [TestMethod]
         public void TestMethod1()
         {
-            Console.ReadKey();
-            Console.Write("Test");
-            //Kommentar
         }
     }
 }
