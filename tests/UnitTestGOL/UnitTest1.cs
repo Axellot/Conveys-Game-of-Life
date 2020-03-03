@@ -10,6 +10,8 @@ namespace UnitTestGOL
         public void TestMethod1()
         {
             Console.ReadKey();
+            Console.Write("Test");
+            //Kommentar
         }
     }
 }
