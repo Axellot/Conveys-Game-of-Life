@@ -13,11 +13,6 @@ namespace Conveys_Game_of_Life
             Cell[,] cellMatrix = new Cell[15,15];
 
             Console.ReadKey();
-
         }
-
-
-
-
     }
 }

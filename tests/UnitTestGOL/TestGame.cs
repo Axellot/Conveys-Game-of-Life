@@ -1,17 +1,20 @@
 ﻿using System;
+using Conveys_Game_of_Life;
+using System.Diagnostics;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestGOL
 {
     [TestClass]
-    private class TestGame
+    public class TestGame
     {
         [TestMethod]
-        private void TestRules()
+        public void TestFillMatrix()
         {
             Game game = new Game();
             game.FillMatrix();
-            Debug.Assert(game.CellMatrix.Length, 225);
+            
+            Debug.Assert(game.CellMatrix.Length == 225);
         }
     }
 }

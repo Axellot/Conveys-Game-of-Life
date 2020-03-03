@@ -13,7 +13,7 @@ namespace Conveys_Game_of_Life
         /// <summary>
         /// Fills the initial matrix with dead cells
         /// </summary>
-        private void FillMatrix()
+        public void FillMatrix()
         {
             for(int i = 0; i < CellMatrix.GetLength(0); i++)
             {
