@@ -1,8 +1,7 @@
-﻿using System;
-using Conveys_Game_of_Life;
-using System.Diagnostics;
+﻿using Conveys_Game_of_Life;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace UnitTestGOL
 {
@@ -14,14 +13,13 @@ namespace UnitTestGOL
         {
             Game game = new Game();
             game.FillMatrix();
-            
+
             Debug.Assert(game.CellMatrix.Length == 225);
         }
 
         [TestMethod]
         public void TestSetLivingCells()
         {
-
             List<KeyValuePair<int, int>> coordinates = new List<KeyValuePair<int, int>>()
             {
                 new KeyValuePair<int, int>(4,5),

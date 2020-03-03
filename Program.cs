@@ -10,8 +10,8 @@ namespace Conveys_Game_of_Life
     {
         static void Main(string[] args)
         {
-            Cell[,] cellMatrix = new Cell[15,15];
-
+            Game game = new Game();
+            game.Play();
             Console.ReadKey();
         }
     }
