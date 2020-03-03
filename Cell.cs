@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Conveys_Game_of_Life
 {
-    class Cell
+    public class Cell
     {
         public bool Alive { get; set; }
 
