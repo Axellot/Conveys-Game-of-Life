@@ -24,7 +24,7 @@
                 {
                     if (!(x == this.XCoordinate && y == this.YCoordinate))
                     {
-                        if (!(x < 0 || y < 0 || x > 14 || y > 14))
+                        if (!(x < 0 || y < 0 || x > cellMatrix.GetLength(0) - 1 || y > cellMatrix.GetLength(1) - 1))
                         {
                             if (cellMatrix[x, y].Alive)
                             {
@@ -35,15 +35,5 @@
                 }
             }
         }
-
-
-
-        //TODO: SET THE 4 RULES FOR GOL 
-        //WE NEED 4 FUNCTIONS FOR THAT?
-        //MAYBE THAT GET'S CALLED IN A BIG FUNCTION
-
-
-
-
     }
 }

@@ -2,35 +2,49 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Conveys_Game_of_Life
 {
     public class Game
     {
-        public Cell[,] CellMatrix { get; set; } = new Cell[15, 15];
+        public Cell[,] CellMatrix { get; set; } = new Cell[30, 30];
         public void Play()
         {
             this.FillMatrix();
             List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
             {
-                new KeyValuePair<int, int>(0,1),
-                new KeyValuePair<int, int>(4,5),
-                new KeyValuePair<int, int>(4,6),
-                new KeyValuePair<int, int>(4,7)
+                new KeyValuePair<int, int>(7,5),
+                new KeyValuePair<int, int>(8,5),
+                new KeyValuePair<int, int>(9,5),
+                new KeyValuePair<int, int>(7,6),
+                new KeyValuePair<int, int>(7,7),
+                new KeyValuePair<int, int>(9,6),
+                new KeyValuePair<int, int>(9,7),
+                new KeyValuePair<int, int>(7,9),
+                new KeyValuePair<int, int>(7,10),
+                new KeyValuePair<int, int>(7,11),
+                new KeyValuePair<int, int>(8,11),
+                new KeyValuePair<int, int>(9,11),
+                new KeyValuePair<int, int>(9,10),
+                new KeyValuePair<int, int>(9,9)
             };
             this.SetLivingCells(coordinatesList);
 
             bool isRunning = true;
             while (isRunning)
             {
+                Console.CursorVisible = false;
                 Console.Clear();
                 DrawGameField();
                 foreach (Cell cell in CellMatrix)
                 {
                     cell.GetLivingNeighborCells(this.CellMatrix);
                 }
-                Console.ReadKey();
+                Rules.ApplyRules(this.CellMatrix);
+                Thread.Sleep(100);
+                //Console.ReadKey();
             }
         }
 
@@ -72,7 +86,7 @@ namespace Conveys_Game_of_Life
                     this.DrawDeadCell();
                 }
                 counter++;
-                if(counter % 15 == 0)
+                if(counter % this.CellMatrix.GetLength(0) == 0)
                 {
                     Console.Write("\n\t\t");
                 }
