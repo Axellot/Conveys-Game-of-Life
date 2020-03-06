@@ -10,9 +10,9 @@ namespace Conveys_Game_of_Life
     {
         static void Main(string[] args)
         {
+            //MainMenu();
             Game game = new Game();
             game.Play();
-            Console.ReadKey();
         }
     }
 }

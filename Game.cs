@@ -15,20 +15,20 @@ namespace Conveys_Game_of_Life
             this.FillMatrix();
             List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
             {
-                new KeyValuePair<int, int>(7,5),
-                new KeyValuePair<int, int>(8,5),
-                new KeyValuePair<int, int>(9,5),
-                new KeyValuePair<int, int>(7,6),
-                new KeyValuePair<int, int>(7,7),
-                new KeyValuePair<int, int>(9,6),
-                new KeyValuePair<int, int>(9,7),
-                new KeyValuePair<int, int>(7,9),
-                new KeyValuePair<int, int>(7,10),
-                new KeyValuePair<int, int>(7,11),
-                new KeyValuePair<int, int>(8,11),
-                new KeyValuePair<int, int>(9,11),
-                new KeyValuePair<int, int>(9,10),
-                new KeyValuePair<int, int>(9,9)
+                new KeyValuePair<int, int>(13,14),
+                new KeyValuePair<int, int>(13,13),
+                new KeyValuePair<int, int>(13,12),
+                new KeyValuePair<int, int>(14,12),
+                new KeyValuePair<int, int>(15,12),
+                new KeyValuePair<int, int>(15,13),
+                new KeyValuePair<int, int>(15,14),
+                new KeyValuePair<int, int>(13,16),
+                new KeyValuePair<int, int>(13,17),
+                new KeyValuePair<int, int>(13,18),
+                new KeyValuePair<int, int>(14,18),
+                new KeyValuePair<int, int>(15,18),
+                new KeyValuePair<int, int>(15,17),
+                new KeyValuePair<int, int>(15,16)
             };
             this.SetLivingCells(coordinatesList);
 
@@ -43,7 +43,7 @@ namespace Conveys_Game_of_Life
                     cell.GetLivingNeighborCells(this.CellMatrix);
                 }
                 Rules.ApplyRules(this.CellMatrix);
-                Thread.Sleep(100);
+                Thread.Sleep(500);
                 //Console.ReadKey();
             }
         }
