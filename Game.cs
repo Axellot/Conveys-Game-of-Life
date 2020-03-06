@@ -14,6 +14,7 @@ namespace Conveys_Game_of_Life
             this.FillMatrix();
             List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
             {
+                new KeyValuePair<int, int>(0,1),
                 new KeyValuePair<int, int>(4,5),
                 new KeyValuePair<int, int>(4,6),
                 new KeyValuePair<int, int>(4,7)
@@ -25,6 +26,10 @@ namespace Conveys_Game_of_Life
             {
                 Console.Clear();
                 DrawGameField();
+                foreach (Cell cell in CellMatrix)
+                {
+                    cell.GetLivingNeighborCells(this.CellMatrix);
+                }
                 Console.ReadKey();
             }
         }
@@ -36,7 +41,7 @@ namespace Conveys_Game_of_Life
             {
                 for (int y = 0; y < length; y++)
                 {
-                    this.CellMatrix[x,y] = new Cell(false);
+                    this.CellMatrix[x,y] = new Cell(false, x, y);
                 }
             }
         }

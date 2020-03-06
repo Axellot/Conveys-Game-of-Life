@@ -1,19 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Conveys_Game_of_Life
+﻿namespace Conveys_Game_of_Life
 {
     public class Cell
     {
         public bool Alive { get; set; }
+        public int LivingNeighbors { get; set; }
+        public int XCoordinate { get; set; }
+        public int YCoordinate { get; set; }
 
-        public Cell(bool alive)
+        public Cell(bool alive, int xCoordinate, int yCoordinate)
         {
             this.Alive = alive;
+            this.XCoordinate = xCoordinate;
+            this.YCoordinate = yCoordinate;
         }
+
+        public void GetLivingNeighborCells(Cell[,] cellMatrix)
+        {
+            this.LivingNeighbors = 0;
+
+            for (int x = this.XCoordinate - 1; x <= this.XCoordinate + 1; x++)
+            {
+                for (int y = this.YCoordinate - 1; y <= this.YCoordinate + 1; y++)
+                {
+                    if (!(x == this.XCoordinate && y == this.YCoordinate))
+                    {
+                        if (!(x < 0 || y < 0 || x > 14 || y > 14))
+                        {
+                            if (cellMatrix[x, y].Alive)
+                            {
+                                this.LivingNeighbors++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        //TODO: SET THE 4 RULES FOR GOL 
+        //WE NEED 4 FUNCTIONS FOR THAT?
+        //MAYBE THAT GET'S CALLED IN A BIG FUNCTION
+
+
 
 
     }
