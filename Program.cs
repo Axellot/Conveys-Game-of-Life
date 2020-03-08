@@ -12,7 +12,8 @@ namespace Conveys_Game_of_Life
         {
             //MainMenu();
             Game game = new Game();
-            game.Play();
+            MainMenu.DrawMainMenu();
+            //game.Play();
         }
     }
 }

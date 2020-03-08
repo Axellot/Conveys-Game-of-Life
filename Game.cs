@@ -10,27 +10,27 @@ namespace Conveys_Game_of_Life
     public class Game
     {
         public Cell[,] CellMatrix { get; set; } = new Cell[30, 30];
-        public void Play()
+        public void Play(List<KeyValuePair<int, int>> userCells)
         {
             this.FillMatrix();
-            List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
-            {
-                new KeyValuePair<int, int>(13,14),
-                new KeyValuePair<int, int>(13,13),
-                new KeyValuePair<int, int>(13,12),
-                new KeyValuePair<int, int>(14,12),
-                new KeyValuePair<int, int>(15,12),
-                new KeyValuePair<int, int>(15,13),
-                new KeyValuePair<int, int>(15,14),
-                new KeyValuePair<int, int>(13,16),
-                new KeyValuePair<int, int>(13,17),
-                new KeyValuePair<int, int>(13,18),
-                new KeyValuePair<int, int>(14,18),
-                new KeyValuePair<int, int>(15,18),
-                new KeyValuePair<int, int>(15,17),
-                new KeyValuePair<int, int>(15,16)
-            };
-            this.SetLivingCells(coordinatesList);
+            //List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
+            //{
+            //    new KeyValuePair<int, int>(13,14),
+            //    new KeyValuePair<int, int>(13,13),
+            //    new KeyValuePair<int, int>(13,12),
+            //    new KeyValuePair<int, int>(14,12),
+            //    new KeyValuePair<int, int>(15,12),
+            //    new KeyValuePair<int, int>(15,13),
+            //    new KeyValuePair<int, int>(15,14),
+            //    new KeyValuePair<int, int>(13,16),
+            //    new KeyValuePair<int, int>(13,17),
+            //    new KeyValuePair<int, int>(13,18),
+            //    new KeyValuePair<int, int>(14,18),
+            //    new KeyValuePair<int, int>(15,18),
+            //    new KeyValuePair<int, int>(15,17),
+            //    new KeyValuePair<int, int>(15,16)
+            //};
+            this.SetLivingCells(userCells);
 
             bool isRunning = true;
             while (isRunning)
