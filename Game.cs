@@ -74,7 +74,7 @@ namespace Conveys_Game_of_Life
         public void DrawGameField()
         {
             outputString.Clear();
-            int counter = 0;
+            int LineCounter = 0;
             foreach (Cell cell in CellMatrix)
             {
                 if (cell.Alive)
@@ -85,8 +85,8 @@ namespace Conveys_Game_of_Life
                 {
                     this.DrawDeadCell();
                 }
-                counter++;
-                if (counter % this.CellMatrix.GetLength(0) == 0)
+                LineCounter++;
+                if (LineCounter % this.CellMatrix.GetLength(0) == 0)
                 {
                     outputString.Append("\n");
                 }

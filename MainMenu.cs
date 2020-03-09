@@ -7,7 +7,7 @@ namespace Conveys_Game_of_Life
     {
         public static void DrawMainMenu()
         {
-            List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
+            List<KeyValuePair<int, int>> defaultLivingCells = new List<KeyValuePair<int, int>>()
             {
                 new KeyValuePair<int, int>(23,24),
                 new KeyValuePair<int, int>(23,23),
@@ -47,7 +47,7 @@ namespace Conveys_Game_of_Life
                         else
                         {
                             fieldSize = 50;
-                            userCells = coordinatesList;
+                            userCells = defaultLivingCells;
                         }
                         Game game = new Game(fieldSize);
                         game.Play(userCells);
