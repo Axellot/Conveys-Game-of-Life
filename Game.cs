@@ -10,6 +10,7 @@ namespace Conveys_Game_of_Life
     public class Game
     {
         public Cell[,] CellMatrix { get; set; } = new Cell[30, 30];
+        public bool isRunning { get; set; } = true;
         public void Play(List<KeyValuePair<int, int>> userCells)
         {
             this.FillMatrix();
@@ -31,9 +32,9 @@ namespace Conveys_Game_of_Life
             //    new KeyValuePair<int, int>(15,16)
             //};
             this.SetLivingCells(userCells);
-
-            bool isRunning = true;
-            while (isRunning)
+            Thread inputThread = new Thread(new ThreadStart(InputListener));
+            inputThread.Start();
+            while (this.isRunning)
             {
                 Console.CursorVisible = false;
                 Console.Clear();
@@ -43,8 +44,23 @@ namespace Conveys_Game_of_Life
                     cell.GetLivingNeighborCells(this.CellMatrix);
                 }
                 Rules.ApplyRules(this.CellMatrix);
+
+
                 Thread.Sleep(500);
-                //Console.ReadKey();
+            }
+            inputThread.Abort();
+        }
+
+        public void InputListener()
+        {
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if(key.Key == ConsoleKey.Escape)
+                {
+                    this.isRunning = false;
+                }
             }
         }
 
