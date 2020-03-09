@@ -10,6 +10,7 @@ namespace Conveys_Game_of_Life
     public class Game
     {
         public Cell[,] CellMatrix { get; set; }
+        public StringBuilder outputString = new StringBuilder();
 
         public Game(int userLength)
         {
@@ -19,23 +20,26 @@ namespace Conveys_Game_of_Life
         public void Play(List<KeyValuePair<int, int>> userCells)
         {
             this.FillMatrix();
-            //List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
-            //{
-            //    new KeyValuePair<int, int>(13,14),
-            //    new KeyValuePair<int, int>(13,13),
-            //    new KeyValuePair<int, int>(13,12),
-            //    new KeyValuePair<int, int>(14,12),
-            //    new KeyValuePair<int, int>(15,12),
-            //    new KeyValuePair<int, int>(15,13),
-            //    new KeyValuePair<int, int>(15,14),
-            //    new KeyValuePair<int, int>(13,16),
-            //    new KeyValuePair<int, int>(13,17),
-            //    new KeyValuePair<int, int>(13,18),
-            //    new KeyValuePair<int, int>(14,18),
-            //    new KeyValuePair<int, int>(15,18),
-            //    new KeyValuePair<int, int>(15,17),
-            //    new KeyValuePair<int, int>(15,16)
-            //};
+            List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
+            {
+                new KeyValuePair<int, int>(13,14),
+                new KeyValuePair<int, int>(13,13),
+                new KeyValuePair<int, int>(13,12),
+                new KeyValuePair<int, int>(14,12),
+                new KeyValuePair<int, int>(15,12),
+                new KeyValuePair<int, int>(15,13),
+                new KeyValuePair<int, int>(15,14),
+                new KeyValuePair<int, int>(13,16),
+                new KeyValuePair<int, int>(13,17),
+                new KeyValuePair<int, int>(13,18),
+                new KeyValuePair<int, int>(14,18),
+                new KeyValuePair<int, int>(15,18),
+                new KeyValuePair<int, int>(15,17),
+                new KeyValuePair<int, int>(15,16)
+            };
+
+            userCells = coordinatesList;
+
             this.SetLivingCells(userCells);
 
             bool isRunning = true;
@@ -75,6 +79,7 @@ namespace Conveys_Game_of_Life
 
         public void DrawGameField()
         {
+            outputString.Clear();
             int counter = 0;
             foreach (Cell cell in CellMatrix)
             {
@@ -90,23 +95,20 @@ namespace Conveys_Game_of_Life
                 counter++;
                 if(counter % this.CellMatrix.GetLength(0) == 0)
                 {
-                    Console.Write("\n");
+                    outputString.Append("\n");
                 }
             }
+            Console.WriteLine(outputString.ToString());
         }
 
         private void DrawLivingCell()
         {
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write(" O ");
-            Console.ResetColor();
+            outputString.Append(" O ");
         }
 
         private void DrawDeadCell()
         {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(" O ");
-            Console.ResetColor();
+            outputString.Append("   ");
         }
     }
 }

@@ -21,8 +21,19 @@ namespace Conveys_Game_of_Life
                     case "1":
                         Console.Clear();
                         mainMenuBool = false;
-                        int fieldSize = GetGamefieldLength();
-                        List<KeyValuePair<int, int>> userCells = StartProgram(fieldSize);
+                        int fieldSize = 0;
+                        List<KeyValuePair<int, int>> userCells = new List<KeyValuePair<int, int>>();
+                        bool gameMode = GetGameMode();
+                        if (gameMode)
+                        {
+                            fieldSize = GetGamefieldLength();
+                            userCells = StartProgram(fieldSize);
+                        }
+                        else
+                        {
+                            fieldSize = 50;
+                            userCells = 
+                        }
                         Game game = new Game(fieldSize);
                         game.Play(userCells);
                         break;
@@ -34,6 +45,26 @@ namespace Conveys_Game_of_Life
                     default:
                         Console.Clear();
                         Console.WriteLine("Command not accepted");
+                        break;
+                }
+            }
+        }
+
+        public static bool GetGameMode()
+        {
+            while (true)
+            {
+                Console.WriteLine("Choose which game mode you want to start");
+                Console.WriteLine("(1) Manual input, (2) Default field");
+                string userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case "1":
+                        return true;
+                    case "2":
+                        return false;
+                    default:
                         break;
                 }
             }
