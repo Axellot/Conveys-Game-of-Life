@@ -9,6 +9,7 @@ namespace Conveys_Game_of_Life
 {
     public class Game
     {
+        public bool isRunning { get; set; } = true;
         public Cell[,] CellMatrix { get; set; }
         public StringBuilder outputString = new StringBuilder();
 
@@ -22,28 +23,25 @@ namespace Conveys_Game_of_Life
             this.FillMatrix();
             List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
             {
-                new KeyValuePair<int, int>(13,14),
-                new KeyValuePair<int, int>(13,13),
-                new KeyValuePair<int, int>(13,12),
-                new KeyValuePair<int, int>(14,12),
-                new KeyValuePair<int, int>(15,12),
-                new KeyValuePair<int, int>(15,13),
-                new KeyValuePair<int, int>(15,14),
-                new KeyValuePair<int, int>(13,16),
-                new KeyValuePair<int, int>(13,17),
-                new KeyValuePair<int, int>(13,18),
-                new KeyValuePair<int, int>(14,18),
-                new KeyValuePair<int, int>(15,18),
-                new KeyValuePair<int, int>(15,17),
-                new KeyValuePair<int, int>(15,16)
+                new KeyValuePair<int, int>(23,24),
+                new KeyValuePair<int, int>(23,23),
+                new KeyValuePair<int, int>(23,22),
+                new KeyValuePair<int, int>(24,22),
+                new KeyValuePair<int, int>(25,22),
+                new KeyValuePair<int, int>(25,23),
+                new KeyValuePair<int, int>(25,24),
+                new KeyValuePair<int, int>(23,26),
+                new KeyValuePair<int, int>(23,27),
+                new KeyValuePair<int, int>(23,28),
+                new KeyValuePair<int, int>(24,28),
+                new KeyValuePair<int, int>(25,28),
+                new KeyValuePair<int, int>(25,27),
+                new KeyValuePair<int, int>(25,26)
             };
-
-            userCells = coordinatesList;
-
             this.SetLivingCells(userCells);
-
-            bool isRunning = true;
-            while (isRunning)
+            Thread inputThread = new Thread(new ThreadStart(InputListener));
+            inputThread.Start();
+            while (this.isRunning)
             {
                 Console.CursorVisible = false;
                 Console.Clear();
@@ -53,7 +51,23 @@ namespace Conveys_Game_of_Life
                     cell.GetLivingNeighborCells(this.CellMatrix);
                 }
                 Rules.ApplyRules(this.CellMatrix);
+
+
                 Thread.Sleep(500);
+            }
+            inputThread.Abort();
+        }
+
+        public void InputListener()
+        {
+            while (true)
+            {
+                ConsoleKeyInfo key = Console.ReadKey(true);
+
+                if(key.Key == ConsoleKey.Escape)
+                {
+                    this.isRunning = false;
+                }
             }
         }
 

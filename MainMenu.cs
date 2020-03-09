@@ -13,6 +13,7 @@ namespace Conveys_Game_of_Life
             bool mainMenuBool = true;
             while (mainMenuBool)
             {
+                Console.Clear();
                 Console.WriteLine("Welcome to Conway's Game of Life");
                 Console.WriteLine("(1) Start Game, (2) End Program");
                 string userInput = Console.ReadLine();
@@ -76,13 +77,7 @@ namespace Conveys_Game_of_Life
             bool createCellsBool = true;
             do
             {
-                int xCoordinate = 0;
-                int yCoordinate = 0;
-
-                xCoordinate = AskForCoordinates("x", fieldSize);
-                yCoordinate = AskForCoordinates("y", fieldSize);
-
-                KeyValuePair<int, int> cell = new KeyValuePair<int, int>(xCoordinate, yCoordinate);
+                KeyValuePair<int, int> cell = new KeyValuePair<int, int>(AskForCoordinates("x", fieldSize), AskForCoordinates("y", fieldSize));
                 userLivingCells.Add(cell);
 
                 AskForNewCell(ref createCellsBool);
