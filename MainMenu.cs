@@ -10,7 +10,6 @@ namespace Conveys_Game_of_Life
     {
         public static void DrawMainMenu()
         {
-            Game game = new Game();
             bool mainMenuBool = true;
             while (mainMenuBool)
             {
@@ -21,11 +20,15 @@ namespace Conveys_Game_of_Life
                 {
                     case "1":
                         Console.Clear();
-                        List<KeyValuePair<int, int>> userCells = StartProgram();
+                        mainMenuBool = false;
+                        int fieldSize = GetGamefieldLength();
+                        List<KeyValuePair<int, int>> userCells = StartProgram(fieldSize);
+                        Game game = new Game(fieldSize);
                         game.Play(userCells);
                         break;
 
                     case "2":
+                        mainMenuBool = false;
                         break;
 
                     default:
@@ -36,7 +39,7 @@ namespace Conveys_Game_of_Life
             }
         }
 
-        public static List<KeyValuePair<int, int>> StartProgram()
+        public static List<KeyValuePair<int, int>> StartProgram(int fieldSize)
         {
             List<KeyValuePair<int, int>> userLivingCells = new List<KeyValuePair<int, int>>();
             bool createCellsBool = true;
@@ -45,8 +48,8 @@ namespace Conveys_Game_of_Life
                 int xCoordinate = 0;
                 int yCoordinate = 0;
 
-                xCoordinate = AskForCoordinates("x");
-                yCoordinate = AskForCoordinates("y");
+                xCoordinate = AskForCoordinates("x", fieldSize);
+                yCoordinate = AskForCoordinates("y", fieldSize);
 
                 KeyValuePair<int, int> cell = new KeyValuePair<int, int>(xCoordinate, yCoordinate);
                 userLivingCells.Add(cell);
@@ -56,15 +59,32 @@ namespace Conveys_Game_of_Life
             return userLivingCells;
         }
 
-        public static int AskForCoordinates(string coordinateType)
+        public static int GetGamefieldLength()
+        {
+            while (true)
+            {
+                Console.WriteLine("Please insert the size of the gamefield (between 10 and 50)!");
+                string userInput = Console.ReadLine();
+                if(int.TryParse(userInput, out int fieldSize) && fieldSize < 51 && fieldSize > 9)
+                {
+                    return fieldSize;
+                }
+                else
+                {
+                    Console.WriteLine("Please only user numbers between 10 and 50!");
+                }
+            }
+        }
+
+        public static int AskForCoordinates(string coordinateType, int fieldSize)
         {
             while (true)
             {
                 Console.WriteLine($"Please enter the {coordinateType}-Coordinate of the living cell!");
                 string CoordinateInput = Console.ReadLine();
-                if (Int32.TryParse(CoordinateInput, out int Coordinate))
+                if (Int32.TryParse(CoordinateInput, out int coordinate) && coordinate < fieldSize && coordinate >= 0)
                 {
-                    return Coordinate;
+                    return coordinate;
                 }
                 else
                 {

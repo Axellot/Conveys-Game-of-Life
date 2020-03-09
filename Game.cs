@@ -9,7 +9,13 @@ namespace Conveys_Game_of_Life
 {
     public class Game
     {
-        public Cell[,] CellMatrix { get; set; } = new Cell[30, 30];
+        public Cell[,] CellMatrix { get; set; }
+
+        public Game(int userLength)
+        {
+            CellMatrix = new Cell[userLength, userLength];
+        }
+
         public void Play(List<KeyValuePair<int, int>> userCells)
         {
             this.FillMatrix();
