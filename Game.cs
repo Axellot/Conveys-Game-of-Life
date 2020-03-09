@@ -11,6 +11,13 @@ namespace Conveys_Game_of_Life
     {
         public Cell[,] CellMatrix { get; set; } = new Cell[30, 30];
         public bool isRunning { get; set; } = true;
+        public Cell[,] CellMatrix { get; set; }
+
+        public Game(int userLength)
+        {
+            CellMatrix = new Cell[userLength, userLength];
+        }
+
         public void Play(List<KeyValuePair<int, int>> userCells)
         {
             this.FillMatrix();
@@ -87,9 +94,6 @@ namespace Conveys_Game_of_Life
         public void DrawGameField()
         {
             int counter = 0;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.Write("\t\t");
             foreach (Cell cell in CellMatrix)
             {
                 
@@ -104,7 +108,7 @@ namespace Conveys_Game_of_Life
                 counter++;
                 if(counter % this.CellMatrix.GetLength(0) == 0)
                 {
-                    Console.Write("\n\t\t");
+                    Console.Write("\n");
                 }
             }
         }
