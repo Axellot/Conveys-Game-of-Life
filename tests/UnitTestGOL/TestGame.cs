@@ -11,7 +11,7 @@ namespace UnitTestGOL
         [TestMethod]
         public void TestFillMatrix()
         {
-            Game game = new Game();
+            Game game = new Game(15);
             game.FillMatrix();
 
             Debug.Assert(game.CellMatrix.Length == 225);
@@ -27,7 +27,7 @@ namespace UnitTestGOL
                 new KeyValuePair<int, int>(4,7)
             };
 
-            Game game = new Game();
+            Game game = new Game(15);
             game.FillMatrix();
             game.SetLivingCells(coordinates);
 

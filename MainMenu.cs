@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Conveys_Game_of_Life
 {
     public static class MainMenu
-    { 
+    {
         public static void DrawMainMenu()
         {
             List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
@@ -80,8 +77,10 @@ namespace Conveys_Game_of_Life
                 {
                     case "1":
                         return true;
+
                     case "2":
                         return false;
+
                     default:
                         break;
                 }
@@ -108,7 +107,7 @@ namespace Conveys_Game_of_Life
             {
                 Console.WriteLine("Please insert the size of the gamefield (between 10 and 50)!");
                 string userInput = Console.ReadLine();
-                if(int.TryParse(userInput, out int fieldSize) && fieldSize < 51 && fieldSize > 9)
+                if (int.TryParse(userInput, out int fieldSize) && fieldSize < 51 && fieldSize > 9)
                 {
                     return fieldSize;
                 }
@@ -150,15 +149,16 @@ namespace Conveys_Game_of_Life
                         Console.Clear();
                         userInputBool = false;
                         break;
+
                     case "2":
                         Console.Clear();
                         userInputBool = false;
                         createCellsBool = false;
                         break;
+
                     default:
                         Console.WriteLine("Command not accepted");
                         break;
-
                 }
             }
         }

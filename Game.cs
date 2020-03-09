@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Conveys_Game_of_Life
 {
@@ -46,7 +44,7 @@ namespace Conveys_Game_of_Life
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
-                if(key.Key == ConsoleKey.Escape)
+                if (key.Key == ConsoleKey.Escape)
                 {
                     this.isRunning = false;
                 }
@@ -60,14 +58,14 @@ namespace Conveys_Game_of_Life
             {
                 for (int y = 0; y < length; y++)
                 {
-                    this.CellMatrix[x,y] = new Cell(false, x, y);
+                    this.CellMatrix[x, y] = new Cell(false, x, y);
                 }
             }
         }
 
-        public void SetLivingCells(List<KeyValuePair<int,int>> coordinateList)
+        public void SetLivingCells(List<KeyValuePair<int, int>> coordinateList)
         {
-            foreach(KeyValuePair<int,int> coordinate in coordinateList)
+            foreach (KeyValuePair<int, int> coordinate in coordinateList)
             {
                 CellMatrix[coordinate.Key, coordinate.Value].Alive = true;
             }
@@ -79,7 +77,6 @@ namespace Conveys_Game_of_Life
             int counter = 0;
             foreach (Cell cell in CellMatrix)
             {
-                
                 if (cell.Alive)
                 {
                     this.DrawLivingCell();
@@ -89,7 +86,7 @@ namespace Conveys_Game_of_Life
                     this.DrawDeadCell();
                 }
                 counter++;
-                if(counter % this.CellMatrix.GetLength(0) == 0)
+                if (counter % this.CellMatrix.GetLength(0) == 0)
                 {
                     outputString.Append("\n");
                 }
