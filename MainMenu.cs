@@ -7,9 +7,27 @@ using System.Threading.Tasks;
 namespace Conveys_Game_of_Life
 {
     public static class MainMenu
-    {
+    { 
         public static void DrawMainMenu()
         {
+            List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
+            {
+                new KeyValuePair<int, int>(23,24),
+                new KeyValuePair<int, int>(23,23),
+                new KeyValuePair<int, int>(23,22),
+                new KeyValuePair<int, int>(24,22),
+                new KeyValuePair<int, int>(25,22),
+                new KeyValuePair<int, int>(25,23),
+                new KeyValuePair<int, int>(25,24),
+                new KeyValuePair<int, int>(23,26),
+                new KeyValuePair<int, int>(23,27),
+                new KeyValuePair<int, int>(23,28),
+                new KeyValuePair<int, int>(24,28),
+                new KeyValuePair<int, int>(25,28),
+                new KeyValuePair<int, int>(25,27),
+                new KeyValuePair<int, int>(25,26)
+            };
+
             bool mainMenuBool = true;
             while (mainMenuBool)
             {
@@ -21,7 +39,6 @@ namespace Conveys_Game_of_Life
                 {
                     case "1":
                         Console.Clear();
-                        mainMenuBool = false;
                         int fieldSize = 0;
                         List<KeyValuePair<int, int>> userCells = new List<KeyValuePair<int, int>>();
                         bool gameMode = GetGameMode();
@@ -33,7 +50,7 @@ namespace Conveys_Game_of_Life
                         else
                         {
                             fieldSize = 50;
-                            userCells = 
+                            userCells = coordinatesList;
                         }
                         Game game = new Game(fieldSize);
                         game.Play(userCells);

@@ -21,23 +21,6 @@ namespace Conveys_Game_of_Life
         public void Play(List<KeyValuePair<int, int>> userCells)
         {
             this.FillMatrix();
-            List<KeyValuePair<int, int>> coordinatesList = new List<KeyValuePair<int, int>>()
-            {
-                new KeyValuePair<int, int>(23,24),
-                new KeyValuePair<int, int>(23,23),
-                new KeyValuePair<int, int>(23,22),
-                new KeyValuePair<int, int>(24,22),
-                new KeyValuePair<int, int>(25,22),
-                new KeyValuePair<int, int>(25,23),
-                new KeyValuePair<int, int>(25,24),
-                new KeyValuePair<int, int>(23,26),
-                new KeyValuePair<int, int>(23,27),
-                new KeyValuePair<int, int>(23,28),
-                new KeyValuePair<int, int>(24,28),
-                new KeyValuePair<int, int>(25,28),
-                new KeyValuePair<int, int>(25,27),
-                new KeyValuePair<int, int>(25,26)
-            };
             this.SetLivingCells(userCells);
             Thread inputThread = new Thread(new ThreadStart(InputListener));
             inputThread.Start();
@@ -52,8 +35,7 @@ namespace Conveys_Game_of_Life
                 }
                 Rules.ApplyRules(this.CellMatrix);
 
-
-                Thread.Sleep(500);
+                Thread.Sleep(250);
             }
             inputThread.Abort();
         }
