@@ -50,7 +50,6 @@ namespace Conveys_Game_of_Life
                 }
                 Rules.ApplyRules(this.CellMatrix);
                 Thread.Sleep(500);
-                //Console.ReadKey();
             }
         }
 
@@ -77,9 +76,6 @@ namespace Conveys_Game_of_Life
         public void DrawGameField()
         {
             int counter = 0;
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.Write("\t\t");
             foreach (Cell cell in CellMatrix)
             {
                 
@@ -94,7 +90,7 @@ namespace Conveys_Game_of_Life
                 counter++;
                 if(counter % this.CellMatrix.GetLength(0) == 0)
                 {
-                    Console.Write("\n\t\t");
+                    Console.Write("\n");
                 }
             }
         }
