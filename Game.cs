@@ -24,18 +24,21 @@ namespace Conveys_Game_of_Life
             inputThread.Start();
             while (this.isRunning)
             {
-                Console.CursorVisible = false;
-                Console.Clear();
-                DrawGameField();
-                foreach (Cell cell in CellMatrix)
-                {
-                    cell.GetLivingNeighborCells(this.CellMatrix);
-                }
-                Rules.ApplyRules(this.CellMatrix);
-
-                Thread.Sleep(250);
+                RunGame();
             }
             inputThread.Abort();
+        }
+
+        private void RunGame()
+        {
+            Console.Clear();
+            DrawGameField();
+            foreach (Cell cell in this.CellMatrix)
+            {
+                cell.GetLivingNeighborCells(this.CellMatrix);
+            }
+            Rules.ApplyRules(this.CellMatrix);
+            Thread.Sleep(250);
         }
 
         public void InputListener()
