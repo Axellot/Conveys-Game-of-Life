@@ -7,6 +7,33 @@ namespace Conveys_Game_of_Life
     {
         public static void DrawMainMenu()
         {
+            bool mainMenuBool = true;
+            while (mainMenuBool)
+            {
+                Console.Clear();
+                Console.WriteLine("Welcome to Conway's Game of Life");
+                Console.WriteLine("(1) Start Game, (2) End Program");
+                string userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case "1":
+                        GetUserInput();
+                        break;
+
+                    case "2":
+                        mainMenuBool = false;
+                        break;
+
+                    default:
+                        Console.Clear();
+                        Console.WriteLine("Command not accepted");
+                        break;
+                }
+            }
+        }
+
+        public static void GetUserInput()
+        {
             List<KeyValuePair<int, int>> defaultLivingCells = new List<KeyValuePair<int, int>>()
             {
                 new KeyValuePair<int, int>(23,24),
@@ -25,44 +52,22 @@ namespace Conveys_Game_of_Life
                 new KeyValuePair<int, int>(25,26)
             };
 
-            bool mainMenuBool = true;
-            while (mainMenuBool)
+            Console.Clear();
+            int fieldSize = 0;
+            List<KeyValuePair<int, int>> userCells = new List<KeyValuePair<int, int>>();
+            bool gameMode = GetGameMode();
+            if (gameMode)
             {
-                Console.Clear();
-                Console.WriteLine("Welcome to Conway's Game of Life");
-                Console.WriteLine("(1) Start Game, (2) End Program");
-                string userInput = Console.ReadLine();
-                switch (userInput)
-                {
-                    case "1":
-                        Console.Clear();
-                        int fieldSize = 0;
-                        List<KeyValuePair<int, int>> userCells = new List<KeyValuePair<int, int>>();
-                        bool gameMode = GetGameMode();
-                        if (gameMode)
-                        {
-                            fieldSize = GetGamefieldLength();
-                            userCells = StartProgram(fieldSize);
-                        }
-                        else
-                        {
-                            fieldSize = 50;
-                            userCells = defaultLivingCells;
-                        }
-                        Game game = new Game(fieldSize);
-                        game.Play(userCells);
-                        break;
-
-                    case "2":
-                        mainMenuBool = false;
-                        break;
-
-                    default:
-                        Console.Clear();
-                        Console.WriteLine("Command not accepted");
-                        break;
-                }
+                fieldSize = GetGamefieldLength();
+                userCells = StartProgram(fieldSize);
             }
+            else
+            {
+                fieldSize = 50;
+                userCells = defaultLivingCells;
+            }
+            Game game = new Game(fieldSize);
+            game.Play(userCells);
         }
 
         public static bool GetGameMode()
